@@ -969,6 +969,7 @@ function cleanApiResponse(rawContent, options = {}) {
     }
 
     if (extractJson) {
+        content += '\n'; //确保下面的正则能匹配"]]}]"结尾的情况，否则会匹配成"]]"
         // 提取第一个完整的JSON数组/对象（支持跨行匹配）
         content = content.replace(/^[^[]*(\[.*\])[^]]*$/s, '$1');
     }
